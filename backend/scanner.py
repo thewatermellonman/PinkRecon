@@ -1,5 +1,8 @@
 import socket
 import time
+import json
+
+from services import identify_service, grab_banner
 
 
 def scan_port(target, port, timeout=0.5):
@@ -45,16 +48,26 @@ def scan_port(target, port, timeout=0.5):
 def scan_host(target, ports):
     results = []
 
-    print(f"\nScanning {target}...")
+    print(f"\nScanning {target}...\n")
 
     for port in ports:
         result = scan_port(target, port)
 
         if result["state"] == "open":
+            service = identify_service(port)
+            banner = grab_banner(target, port)
+
+            result["service"] = service
+            result["banner"] = banner
+
             print(
                 f"[+] {port}/tcp OPEN "
-                f"({result['latency_ms']} ms)"
+                f"| Service: {service} "
+                f"| {result['latency_ms']} ms"
             )
+
+            if banner:
+                print(f"    Banner: {banner}")
 
             results.append(result)
 
@@ -82,5 +95,9 @@ if __name__ == "__main__":
 
     results = scan_host(target, ports)
 
+    with open("scan_results.json", "w", encoding="utf-8") as file:
+        json.dump(results, file, indent=4)
+
     print("\nScan complete.")
     print(f"Open ports: {len(results)}")
+    print("Results saved to scan_results.json")
