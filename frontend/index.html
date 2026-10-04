@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, intitial-scale=1.0">
+        <title>PinkRecon</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    
+    <body>
+        <canvas id="matrix"></canvas>
+
+        <main class="dashboard">
+            <header>
+                <div class="logo">
+                    <span>♡</span> PINKRECON <span>♡</span>
+                </div>
+
+                <p class="subtitle">
+                    NETWORK RECONNAISSANCE TOOL
+                </p>
+            </header>
+
+            <section class="scan-panel">
+                <div class="panel-title">
+                    TARGET NETWORK
+                </div>
+
+                <div class="target-input">
+                    <input
+                        id="networkinput"
+                        type="text"
+                    >
+
+                    <button id="scanbutton">
+                        SCAN
+                    </button>
+                </div>
+            </section>
+
+            <section class="stats">
+                <div class="stat-card">
+                    <span class="stat-label">HOSTS</span>
+                    <strong id="hostcount">0</strong>
+                </div>
+
+                <div class="stat=card">
+                    <span class="stat-label">OPEN PORTS</span>
+                    <strong id="portcount">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">STATUS</span>
+                    <strong id="status">READY</strong>
+                </div>
+            </section>
+
+            <section class="results">
+                <div class="panel-title">
+                    DISCOVERED HOSTS
+                </div>
+
+                <div id="hostlist">
+                    <div class="empty">
+                        No scan results yet
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <script src="script.js"></script>
+        
+    </body>
+</html>
