@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PinkRecon</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    
+    <body>
+        <canvas id="matrix"></canvas>
+
+        <main class="dashboard">
+            <header>
+                <div class="logo">
+                    <span>♡</span> PINKRECON <span>♡</span>
+                </div>
+
+                <p class="subtitle">
+                    NETWORK RECONNAISSANCE TOOL
+                </p>
+                <div class="demo-badge">
+                     DEMO MODE — SAMPLE SCAN DATA
+                </div>
+            </header>
+
+            <section class="scan-panel">
+                <div class="panel-title">
+                    TARGET NETWORK
+                </div>
+
+                <div class="target-input">
+                    <input
+                        id="networkInput"
+                        type="text"
+                        placegolder="192.168.0.0/24"
+                    >
+
+                    <button id="scanButton">
+                        SCAN
+                    </button>
+                </div>
+            </section>
+
+            <section class="stats">
+                <div class="stat-card">
+                    <span class="stat-label">HOSTS</span>
+                    <strong id="hostCount">0</strong>
+                </div>
+
+                <div class="stat=card">
+                    <span class="stat-label">OPEN PORTS</span>
+                    <strong id="portCount">0</strong>
+                </div>
+
+                <div class="stat-card">
+                    <span class="stat-label">STATUS</span>
+                    <strong id="status">READY</strong>
+                </div>
+            </section>
+
+            <section class="results">
+                <div class="panel-title">
+                    DISCOVERED HOSTS
+                </div>
+
+                <div id="hostList">
+                    <div class="empty">
+                        No scan results yet
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+        <script src="script.js"></script>
+        
+    </body>
+</html>
