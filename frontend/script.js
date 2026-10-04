@@ -62,6 +62,13 @@ const status = document.getElementById("status");
 
 const hostList = document.getElementById("hostList");
 
+console.log("scanButton:", scanButton);
+console.log("networkInput:", networkInput);
+console.log("hostCount:", hostCount);
+console.log("portCount:", portCount);
+console.log("status:", status);
+console.log("hostList:", hostList);
+
 
 scanButton.addEventListener("click", async () => {
 
@@ -124,7 +131,6 @@ scanButton.addEventListener("click", async () => {
     }
 });
 
-
 function displayResults(hosts) {
 
     hostCount.textContent = hosts.length;
@@ -146,38 +152,86 @@ function displayResults(hosts) {
         return;
     }
 
-
     hosts.forEach(host => {
 
         const ports = host.open_ports || [];
 
         totalPorts += ports.length;
 
-
         const hostElement = document.createElement("div");
-
         hostElement.className = "host";
 
+        let portHTML = "";
+
+        if (ports.length === 0) {
+
+            portHTML = `
+                <div class="no-ports">
+                    No open ports detected.
+                </div>
+            `;
+
+        } else {
+
+            portHTML = ports.map(port => `
+                <div class="port">
+
+                    <div class="port-main">
+                        <span class="port-number">
+                            ${port.port}/tcp
+                        </span>
+
+                        <span class="port-state">
+                            ${port.state}
+                        </span>
+
+                        <span class="port-service">
+                            ${port.service || "Unknown"}
+                        </span>
+                    </div>
+
+                    ${
+                        port.banner
+                        ? `<div class="banner">
+                            ${port.banner}
+                        </div>`
+                        : ""
+                    }
+
+                </div>
+            `).join("");
+
+        }
+
         hostElement.innerHTML = `
-            <div>
-                <div class="host-ip">
-                    ${host.ip}
+
+            <div class="host-header">
+
+                <div>
+                    <div class="host-ip">
+                        ${host.ip}
+                    </div>
+
+                    <div class="host-status">
+                        ${host.status}
+                    </div>
                 </div>
 
-                <div class="host-status">
-                    ${host.status}
+                <div class="port-count">
+                    ${ports.length}
+                    open port${ports.length === 1 ? "" : "s"}
                 </div>
+
             </div>
 
-            <div>
-                ${ports.length} open port${ports.length === 1 ? "" : "s"}
+            <div class="port-list">
+                ${portHTML}
             </div>
+
         `;
 
         hostList.appendChild(hostElement);
-
     });
 
-
-    portCount.textContent = totalPorts;
+    portCount.textContent = String(totalPorts);
 }

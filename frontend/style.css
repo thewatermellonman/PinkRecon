@@ -175,6 +175,66 @@ button:disabled {
     cursor: wait;
 }
 
+.host {
+    display: block;
+}
+
+.host-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.port-count {
+    color: #ff69b4;
+    font-size: 13px;
+}
+
+.port-list {
+    margin-top: 18px;
+    border-top: 1px solid #42152f;
+}
+
+.port {
+    padding: 12px 0;
+    border-bottom: 1px solid #2b1020;
+}
+
+.port-main {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+}
+
+.port-number {
+    color: #ffb6dc;
+    width: 90px;
+}
+
+.port-state {
+    color: #ff69b4;
+    text-transform: uppercase;
+    width: 70px;
+}
+
+.port-service {
+    color: #d477a9;
+}
+
+.banner {
+    margin-top: 8px;
+    padding-left: 115px;
+    color: #8d526f;
+    font-size: 12px;
+    word-break: break-all;
+}
+
+.no-ports {
+    margin-top: 15px;
+    color: #74405d;
+    font-size: 13px;
+}
+
 @media (max-width: 700px) {
 
     .logo {

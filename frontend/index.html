@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, intitial-scale=1.0">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>PinkRecon</title>
         <link rel="stylesheet" href="style.css">
     </head>
@@ -28,11 +28,12 @@
 
                 <div class="target-input">
                     <input
-                        id="networkinput"
+                        id="networkInput"
                         type="text"
+                        placegolder="192.168.0.0/24"
                     >
 
-                    <button id="scanbutton">
+                    <button id="scanButton">
                         SCAN
                     </button>
                 </div>
@@ -41,12 +42,12 @@
             <section class="stats">
                 <div class="stat-card">
                     <span class="stat-label">HOSTS</span>
-                    <strong id="hostcount">0</strong>
+                    <strong id="hostCount">0</strong>
                 </div>
 
                 <div class="stat=card">
                     <span class="stat-label">OPEN PORTS</span>
-                    <strong id="portcount">0</strong>
+                    <strong id="portCount">0</strong>
                 </div>
 
                 <div class="stat-card">
@@ -60,7 +61,7 @@
                     DISCOVERED HOSTS
                 </div>
 
-                <div id="hostlist">
+                <div id="hostList">
                     <div class="empty">
                         No scan results yet
                     </div>
